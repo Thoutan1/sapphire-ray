@@ -1,5 +1,6 @@
 import { LogLevel, SapphireClient } from '@sapphire/framework';
 import { botPrefix } from '../../../Config';
+import { SlashCommandStore } from '../slashCmd/SlashCommandStore';
 
 export class BotClient extends SapphireClient {
 	public constructor() {
@@ -31,5 +32,6 @@ export class BotClient extends SapphireClient {
 				'DIRECT_MESSAGE_REACTIONS'
 			]
 		});
+		this.stores.register(new SlashCommandStore());
 	}
 }

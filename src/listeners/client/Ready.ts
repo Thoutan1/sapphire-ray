@@ -2,7 +2,7 @@ import { ListenerOptions, PieceContext, Events } from '@sapphire/framework';
 import { Listener, Store } from '@sapphire/framework';
 import { ApplyOptions } from '@sapphire/decorators';
 import { blue, gray, green, magenta, magentaBright, white, yellow } from 'colorette';
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== 'br';
 
 @ApplyOptions<ListenerOptions>({
 	once: true,
@@ -23,10 +23,24 @@ export class ReadyListener extends Listener {
 			name: 'Anjay Mabar',
 			type: 'COMPETING'
 		});
+		this.createSlashCommands();
 		this.printBanner();
 		this.printStoreDebugInformation();
 	}
+	async createSlashCommands() {
+		// this function will tell the SlashCommandStore to update the global and guild commands
+		const slashCommandsStore = this.container.stores.get('slashCommands');
 
+		if (slashCommandsStore) {
+			try {
+				this.container.logger.info('Started refreshing application (/) commands.');
+				await slashCommandsStore.registerCommands();
+				this.container.logger.info('Reloading (/) Command Application');
+			} catch (err: any) {
+				console.log(err);
+			}
+		}
+	}
 	private printBanner() {
 		const success = green('+');
 

@@ -13,6 +13,8 @@ export class UserCommand extends Command {
 	public async messageRun(message: Message, args: Args) {
 		const mention = await args.pick('user').catch(() => message.author);
 
-		return await send(message, { embeds: [new IMessageEmbed().setImage(mention.displayAvatarURL({ dynamic: true, size: 512 }))] });
+		return await send(message, {
+			embeds: [new IMessageEmbed().setTitle(`${mention.username}'s Avatar'`).setImage(mention.displayAvatarURL({ dynamic: true, size: 512 }))]
+		});
 	}
 }
