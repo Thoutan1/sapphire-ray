@@ -21,6 +21,7 @@
 		"@skyra/editable-commands": "^2.1.0",
 		"discord.js": "^13.2.0",
 		"dotenv-cra": "^3.0.2",
+		"esbuild": "^0.13.9",
 		"pretty-ms": "^7.0.1",
 		"reflect-metadata": "^0.1.13"
 	},
@@ -36,13 +37,15 @@
 		"typescript": "4.4.4"
 	},
 	"scripts": {
-		"clean": "rimraf dist",
-		"build": "source ./build.sh && tscBuild",
-		"watch": "tsc -w",
+		"build:esbuild": "node scripts/build.mjs",
+		"build": "yarn clean && yarn build:esbuild",
+		"watch": "node scripts/watch.mjs",
+		"clean": "node scripts/clean.mjs",
 		"start": "node dist/index.js",
 		"dev": "run-s build start",
 		"watch:start": "tsc-watch --onSuccess \"node ./dist/index.js\"",
 		"format": "prettier --write \"src/**/*.ts\""
 	},
+	"packageManager": "yarn@3.0.2",
 	"prettier": "@sapphire/prettier-config"
 }

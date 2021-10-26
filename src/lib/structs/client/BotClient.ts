@@ -32,6 +32,7 @@ export class BotClient extends SapphireClient {
 				'DIRECT_MESSAGE_REACTIONS'
 			]
 		});
+
 		this.stores.register(new SlashCommandStore());
 	}
 }
