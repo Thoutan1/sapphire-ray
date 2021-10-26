@@ -25,15 +25,15 @@
 		"reflect-metadata": "^0.1.13"
 	},
 	"devDependencies": {
-		"@sapphire/prettier-config": "^1.2.3",
-		"@sapphire/ts-config": "^3.1.2",
-		"@types/node": "^16.11.1",
-		"@types/ws": "^8.2.0",
-		"npm-run-all": "^4.1.5",
-		"prettier": "^2.4.1",
-		"rimraf": "^3.0.2",
-		"tsc-watch": "^4.5.0",
-		"typescript": "^4.4.4"
+		"@sapphire/prettier-config": "1.2.3",
+		"@sapphire/ts-config": "3.1.2",
+		"@types/node": "16.11.4",
+		"@types/ws": "8.2.0",
+		"npm-run-all": "4.1.5",
+		"prettier": "2.4.1",
+		"rimraf": "3.0.2",
+		"tsc-watch": "4.5.0",
+		"typescript": "4.4.4"
 	},
 	"scripts": {
 		"clean": "rimraf dist",
