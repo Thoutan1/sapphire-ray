@@ -1,4 +1,4 @@
-import { LogLevel, SapphireClient } from '@sapphire/framework';
+import { Logger, LogLevel, SapphireClient } from '@sapphire/framework';
 import { botPrefix } from '../../../Config';
 import { SlashCommandStore } from '../slashCmd/SlashCommandStore';
 

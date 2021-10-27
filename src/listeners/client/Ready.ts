@@ -9,7 +9,7 @@ const dev = process.env.NODE_ENV !== 'br';
 	event: Events.ClientReady
 })
 export class ReadyListener extends Listener {
-	private readonly style = dev ? yellow : blue;
+	private readonly style = dev ? magenta : blue;
 
 	public constructor(context: PieceContext, options?: ListenerOptions) {
 		super(context, {
@@ -43,6 +43,7 @@ export class ReadyListener extends Listener {
 	}
 	private printBanner() {
 		const success = green('+');
+		const info = yellow('!');
 
 		const llc = dev ? magentaBright : white;
 		const blc = dev ? magenta : blue;
@@ -56,9 +57,9 @@ export class ReadyListener extends Listener {
 
 		console.log(
 			String.raw`
-${line01} ${pad}${blc('1.0.0')}
+${line01} ${pad}[${info}]${blc('1.0.0')}
 ${line02} ${pad}[${success}] Gateway
-${line03}${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${llc('DEVELOPMENT MODE')}` : ''}
+${line03} ${pad} ${pad} ${pad} ${pad}   ${dev ? ` ${pad}${blc('<')}${llc('/')}${blc('>')} ${blc('DEVELOPMENT MODE')}` : ''}
 		`.trim()
 		);
 	}
