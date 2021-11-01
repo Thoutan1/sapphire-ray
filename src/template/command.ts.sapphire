@@ -1,0 +1,17 @@
+{
+	"category": "commands"
+}
+---
+import { ApplyOptions } from '@sapphire/decorators';
+import { RayCommand } from '../../lib/structs/client/RayCommand';
+import type { Message } from 'discord.js';
+import type { Args } from '@sapphire/framework';
+
+@ApplyOptions<RayCommand.Options>({
+	description: 'Your description here.'
+})
+export class {{name}}Command extends RayCommand {
+	public async messageRun(message: Message, args: Args) {
+		// ...
+	}
+}

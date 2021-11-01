@@ -1,21 +1,22 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Args, Command, CommandOptions } from '@sapphire/framework';
+import { RayCommand } from '../../lib/structs/client/RayCommand';
+import type { Args } from '@sapphire/framework';
 import { send } from '@sapphire/plugin-editable-commands';
 import { Type } from '@sapphire/type';
 import { codeBlock, isThenable } from '@sapphire/utilities';
 import type { Message } from 'discord.js';
 import { inspect } from 'util';
 
-@ApplyOptions<CommandOptions>({
+@ApplyOptions<RayCommand.Options>({
 	name: 'eval',
 	aliases: ['ev'],
 	description: 'Evals any JavaScript code',
 	quotes: [],
-	preconditions: ['ownerOnly'],
+	preconditions: ['BotOwner'],
 	flags: ['async', 'hidden', 'showHidden', 'silent', 's'],
 	options: ['depth']
 })
-export class UserCommand extends Command {
+export class UserCommand extends RayCommand {
 	public async messageRun(message: Message, args: Args) {
 		const code = await args.rest('string');
 

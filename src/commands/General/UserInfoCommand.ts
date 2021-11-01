@@ -1,15 +1,16 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Command, CommandOptions, Args } from '@sapphire/framework';
+import { RayCommand } from '../../lib/structs/client/RayCommand';
+import type { Args } from '@sapphire/framework';
 import type { Message } from 'discord.js';
 import { send } from '@sapphire/plugin-editable-commands';
 import { IMessageEmbed } from '../../lib/structs/client/IMessageEmbed';
 import { Timestamp } from '@sapphire/time-utilities';
 
-@ApplyOptions<CommandOptions>({
+@ApplyOptions<RayCommand.Options>({
 	name: 'userinfo',
 	description: 'Know userinfo the user'
 })
-export class UserCommand extends Command {
+export class UserCommand extends RayCommand {
 	public async messageRun(message: Message, args: Args) {
 		const member = args.finished ? message.member : await args.pick('member');
 		const timestamp = new Timestamp('dddd, MMMM DD YYYY, h:mm:ss a');

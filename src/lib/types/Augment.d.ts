@@ -1,4 +1,4 @@
-import type { SlashCommandStore } from './lib/structs/slashCmd/SlashCommandStore';
+import type { SlashCommandStore } from '../structs/slashCmd/SlashCommandStore';
 
 declare module '@sapphire/framework' {
 	interface StoreRegistryEntries {

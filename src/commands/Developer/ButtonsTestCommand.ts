@@ -1,15 +1,15 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Command, CommandOptions } from '@sapphire/framework';
+import { RayCommand } from '../../lib/structs/client/RayCommand';
 import type { Message } from 'discord.js';
 import { IButton } from '../../lib/structs/client/IButtonManager';
 import { IMessageEmbed } from '../../lib/structs/client/IMessageEmbed';
 import { formatMS } from '../../lib/utils/Formatter';
 
-@ApplyOptions<CommandOptions>({
+@ApplyOptions<RayCommand.Options>({
 	name: 'buttontest',
 	description: 'A basic command'
 })
-export class UserCommand extends Command {
+export class UserCommand extends RayCommand {
 	public async messageRun(message: Message) {
 		await message.delete();
 

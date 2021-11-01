@@ -1,15 +1,15 @@
 import { ApplyOptions } from '@sapphire/decorators';
-import { Args, Command, CommandContext, CommandOptions } from '@sapphire/framework';
+import type { Args, Command, CommandContext } from '@sapphire/framework';
 import { botPrefix } from '../../Config';
 import { Collection, Message, MessageEmbed } from 'discord.js';
-
+import { RayCommand } from '../../lib/structs/client/RayCommand';
 function sortCommandsAlphabetically(_: Command[], __: Command[], firstCategory: string, secondCategory: string): 1 | -1 | 0 {
 	if (firstCategory > secondCategory) return 1;
 	if (secondCategory > firstCategory) return -1;
 	return 0;
 }
 
-@ApplyOptions<CommandOptions>({
+@ApplyOptions<RayCommand.Options>({
 	name: 'help',
 	description: 'Show all my Commands',
 	detailedDescription: `
@@ -23,7 +23,7 @@ function sortCommandsAlphabetically(_: Command[], __: Command[], firstCategory: 
     ${botPrefix}help ping
     `
 })
-export class UserCommand extends Command {
+export class UserCommand extends RayCommand {
 	public async messageRun(message: Message, args: Args, context: CommandContext) {
 		const command = args.nextMaybe();
 		return command.exists && !args.getFlags('all') ? this.specific(message, command.value) : this.all(message, context);

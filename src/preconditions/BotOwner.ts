@@ -4,9 +4,9 @@ import type { Message } from 'discord.js';
 import { botOwners } from '../Config';
 
 @ApplyOptions<PreconditionOptions>({
-	name: 'ownerOnly'
+	name: 'BotOwner'
 })
-export class ownerOnly extends Precondition {
+export class BotOwner extends Precondition {
 	run(message: Message) {
 		return botOwners.includes(message.author.id) ? this.ok() : this.error({ message: 'Only bot owner can do this' });
 	}
@@ -14,6 +14,6 @@ export class ownerOnly extends Precondition {
 
 declare module '@sapphire/framework' {
 	export interface Preconditions {
-		ownerOnly: never;
+		BotOwner: never;
 	}
 }

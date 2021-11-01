@@ -1,13 +1,14 @@
 import { ApplyOptions } from '@sapphire/decorators';
+import { RayCommand } from '../../lib/structs/client/RayCommand';
 import { Command, CommandOptions } from '@sapphire/framework';
 import { Message, MessageEmbed, version } from 'discord.js';
 import { formatMS } from '../../lib/utils/Formatter';
 
-@ApplyOptions<CommandOptions>({
+@ApplyOptions<RayCommand.Options>({
 	name: 'stats',
 	description: 'Show my stats'
 })
-export class UserCommand extends Command {
+export class UserCommand extends RayCommand {
 	public async messageRun(message: Message) {
 		let embed = new MessageEmbed()
 			.setAuthor(this.container.client.user?.username as string, undefined, 'https://overtunes.netlify.app/docs/get-started/inviting-the-bot/')
