@@ -1,7 +1,8 @@
 import { ApplyOptions } from '@sapphire/decorators';
 import { RayCommand } from '../../lib/structs/client/RayCommand';
+import { IMessageEmbed } from '../../lib/structs/client/IMessageEmbed';
 import { Command, CommandOptions } from '@sapphire/framework';
-import { Message, MessageEmbed, version } from 'discord.js';
+import { Message, version } from 'discord.js';
 import { formatMS } from '../../lib/utils/Formatter';
 
 @ApplyOptions<RayCommand.Options>({
@@ -10,7 +11,7 @@ import { formatMS } from '../../lib/utils/Formatter';
 })
 export class UserCommand extends RayCommand {
 	public async messageRun(message: Message) {
-		let embed = new MessageEmbed()
+		let embed = new IMessageEmbed()
 			.setAuthor(this.container.client.user?.username as string, undefined, 'https://overtunes.netlify.app/docs/get-started/inviting-the-bot/')
 			.setColor(message.guild?.me?.displayHexColor!)
 			.setThumbnail(this.container.client.user?.displayAvatarURL({ dynamic: true })!)

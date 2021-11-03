@@ -37,6 +37,8 @@ export class UserCommand extends RayCommand {
 					.setTitle(`${command?.description}`)
 					.setColor('#0099ff')
 					.setDescription(`${command?.detailedDescription}`)
+					.addField('Flags', `${command?.options.flags || 'NO flags'}`)
+					.addField('Aliases', `${command?.options.aliases}`)
 					.setFooter(`Command help for ${command?.name}`)
 					.setTimestamp(Date.now())
 			]
