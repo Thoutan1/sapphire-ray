@@ -6,7 +6,10 @@
 		"rootDir": ".",
 		"baseUrl": ".",
 		"composite": true,
-		"noUnusedLocals": false
+		"skipLibCheck": true,
+		"noUnusedLocals": false,
+		"sourceMap": true,
+		"downlevelIteration": true
 	},
 
 	"include": [".", "./**/*.json"],

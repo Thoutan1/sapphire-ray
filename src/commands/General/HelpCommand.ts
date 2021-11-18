@@ -38,8 +38,9 @@ export class UserCommand extends RayCommand {
 					.setColor('#0099ff')
 					.setDescription(`${command?.detailedDescription}`)
 					.addField('Flags', `${command?.options.flags || 'NO flags'}`)
+					.addField('Cooldown Delay', `${command?.options.cooldownDelay || 'No Cooldown'}`)
 					.addField('Aliases', `${command?.options.aliases}`)
-					.setFooter(`Command help for ${command?.name}`)
+					.setFooter(`<> = required | [] = optional`)
 					.setTimestamp(Date.now())
 			]
 		});
@@ -54,6 +55,7 @@ export class UserCommand extends RayCommand {
 					.setThumbnail(this.container.client.user?.displayAvatarURL({})!)
 					.setDescription(content)
 					.setColor('#0099ff')
+					.setFooter(`${context.prefix}help <command> to get more info on a specific command!`)
 					.setTimestamp(Date.now())
 			]
 		});

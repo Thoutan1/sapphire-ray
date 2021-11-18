@@ -22,7 +22,6 @@ export class UserCommand extends RayCommand {
 		const hydroRole = SelectMenuManager.createRole({
 			label: 'HYDRO',
 			description: 'kontol',
-
 			emoji: '<:Element_Geo:763984820052819978>'
 		});
 

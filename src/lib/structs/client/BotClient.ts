@@ -1,4 +1,5 @@
 import { Logger, LogLevel, SapphireClient } from '@sapphire/framework';
+import { Intents } from 'discord.js';
 import { botPrefix } from '../../../Config';
 import { SlashCommandStore } from '../slashCmd/SlashCommandStore';
 
@@ -20,16 +21,23 @@ export class BotClient extends SapphireClient {
 				}
 			},
 			shards: 'auto',
+			partials: ['CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION', 'USER'],
 			intents: [
-				'GUILDS',
-				'GUILD_MEMBERS',
-				'GUILD_BANS',
-				'GUILD_EMOJIS_AND_STICKERS',
-				'GUILD_VOICE_STATES',
-				'GUILD_MESSAGES',
-				'GUILD_MESSAGE_REACTIONS',
-				'DIRECT_MESSAGES',
-				'DIRECT_MESSAGE_REACTIONS'
+				Intents.FLAGS.DIRECT_MESSAGES,
+				Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+				Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+				Intents.FLAGS.GUILDS,
+				Intents.FLAGS.GUILD_BANS,
+				Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+				Intents.FLAGS.GUILD_INTEGRATIONS,
+				Intents.FLAGS.GUILD_INVITES,
+				Intents.FLAGS.GUILD_MEMBERS,
+				Intents.FLAGS.GUILD_MESSAGES,
+				Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+				Intents.FLAGS.GUILD_MESSAGE_TYPING,
+				Intents.FLAGS.GUILD_PRESENCES,
+				Intents.FLAGS.GUILD_VOICE_STATES,
+				Intents.FLAGS.GUILD_WEBHOOKS
 			]
 		});
 
